@@ -11,11 +11,7 @@ let day = document.getElementById('dia')
 let month = document.getElementById('mes')
 
 const maskInputNumCard = value => {
-  return value
-    .replace(/\D/g, '')
-    .replace(/(\d{4})(\d)/, '$1 $2')
-    .replace(/(\d{4})(\d)/, '$1 $2')
-    .replace(/(\d{4})(\d)/, '$1 $2')
+  return value.replace(/\D/g, '').replace(/(\d{4})(\d)/, '$1 $2')
 }
 
 const maskInputCvv = value => {
