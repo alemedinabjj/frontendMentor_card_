@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+  </head>
+  <body>
+   
+    <main class="flex justify-center items-center h-screen">
+      <section
+        class="bg-white w-full h-full shadow-md rounded flex my-2"
+      >
+        <div class="w-[35%] h-full bg-gradient-to-r from-cyan-500 to-blue-500 flex justify-end relative">
+        <div
+        class="w-full h-full gap-10 flex-col flex justify-center absolute right-[-65%] top-1/2 transform -translate-y-1/2"
+        
+        >
+            <div class="w-[65%] rounded-md h-[200px]  bg-slate-900 -translate-x-20 flex flex-col justify-between p-4 text-white">
+              <div>logo</div>
+              <div
+                id="numchange"
+              >0000 0000 0000 0000</div>
+              <div class="flex justify-between">
+                <span
+                  id="namechange"
+                >Nome impresso no cartão</span>
+               <div>
+                <span id="dia">
+                  00/
+                </span>
+                <span id="mes">
+                  00
+                </span>
+               </div>
+  
+              </div>
+            </div>
+            <div class="w-[65%] rounded-md h-[200px]  bg-slate-400">
+              <div class="w-full h-10 bg-gray-900 mt-4 flex items-center justify-end pr-4">
+              </div>
+              <div
+                class="w-[80%] h-10 bg-gray-300 flex justify-end m-auto mt-4 rounded items-center pr-4"
+                >
+                <span class="text-black" id="ccv">
+                  838
+                </span>
+              </div>
+            </div>
+           
+            
+        </div>
+
+         </div>
+        </div>
+        <form onchange="handleFormChange(event)"
+          class="w-[25rem] m-auto p-4 flex flex-col justify-start items-start text-black"
+        >
+        <label for="namecard" class="text-start">Títular do cartão</label>
+        <input type="text" id="namecard" class="rounded border-2 border-slate-200 w-full">
+        <label for="numcard" class=" mt-4">Número do cartão</label>
+        <input type="text" id="numcard" maxlength="16" class="rounded border-2 border-slate-200 w-full">
+       <div class="flex justify-between w-full">
+        <label for="date" class=" mt-4">
+          Data de validade
+        </label>
+        <label for="cvv" class=" mt-4">
+          CVV
+        </label>
+       </div>
+       <div class="flex justify-between w-full">
+       <div> <input placeholder="MM" type="text" maxlength="2" id="mes" class="rounded border-2 border-slate-200 w-[5rem] text-center">
+        <input placeholder="DD" type="text" id="dia" max="2" class="rounded border-2 border-slate-200 w-[5rem] text-center"></div>
+        <input type="text" id="cvv" maxlength="3" class="rounded border-2 border-slate-200 w-[5rem]">
+       </div>
+        <button class="bg-blue-500 text-white w-full mt-4 p-2 rounded hover:brightness-50 transition"
+          onclick="handleFormSubmit(event)"
+        >Pagar</button>
+        </form>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
