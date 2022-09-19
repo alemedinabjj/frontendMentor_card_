@@ -1,67 +1,66 @@
-let nameCard = document.getElementById("namecard");
-      let numCard = document.getElementById("numcard");
-      let cvv = document.getElementById("cvv");
+let nameCard = document.getElementById('namecard')
+let numCard = document.getElementById('numcard')
+let cvv = document.getElementById('cvv')
 
-      let ccvvalue = document.getElementById("ccv");
+let ccvvalue = document.getElementById('ccv')
 
-      let numchange = document.getElementById("numchange");
-      let namechange = document.getElementById("namechange");
+let numchange = document.getElementById('numchange')
+let namechange = document.getElementById('namechange')
 
-      let day = document.getElementById("dia");
-      let month = document.getElementById("mes");
+let day = document.getElementById('dia')
+let month = document.getElementById('mes')
 
+const maskInputNumCard = value => {
+  return value
+    .replace(/\D/g, '')
+    .replace(/(\d{4})(\d)/, '$1 $2')
+    .replace(/(\d{4})(\d)/, '$1 $2')
+    .replace(/(\d{4})(\d)/, '$1 $2')
+}
 
-      const maskInputNumCard = (value) => {
-   
-          return value
-            .replace(/\D/g, "")
-            .replace(/(\d{4})(\d)/, "$1 $2")
-            .replace(/(\d{4})(\d)/, "$1 $2")
-            .replace(/(\d{4})(\d)/, "$1 $2");
-        };
-      
+const maskInputCvv = value => {
+  return value.replace(/\D/g, '').replace(/(\d{3})(\d)/, '$1')
+}
 
+const handleFormChange = event => {
+  const { value, id } = event.target
 
-        const maskInputCvv = (value) => {
-          return value.replace(/\D/g, "").replace(/(\d{3})(\d)/, "$1");
-        };
+  if (id === 'numcard') {
+    numchange.innerText = maskInputNumCard(value)
+  } else if (id === 'namecard') {
+    namechange.innerText = value
+  } else if (id === 'cvv') {
+    ccvvalue.innerHTML = maskInputCvv(value)
+    console.log(cvv)
+  }
 
-        const handleFormChange = (event) => {
-          const { value, id } = event.target;
+  if (id === 'dia') {
+    day.innerText = `${value}/`
+  } else if (id === 'mes') {
+    month.innerText = value
+  }
+}
 
-          
+const handleFormSubmit = event => {
+  event.preventDefault()
 
-          if (id === "numcard") {
-            numchange.innerText = maskInputNumCard(value);
-          } else if (id === "namecard") {
-            namechange.innerText = value;
-          } else if (id === "cvv") {
-            ccvvalue.innerHTML = maskInputCvv(value);
-            console.log(cvv);
-          }
+  if (
+    numCard.value.length < 16 ||
+    nameCard.value.length < 3 ||
+    cvv.value.length < 3
+  ) {
+    alert('Preencha todos os campos corretamente')
+    numCard.classList.add('border-red-500')
+    nameCard.classList.add('border-red-500')
+    cvv.classList.add('border-red-500')
+  } else {
+    alert('Pagamento realizado com sucesso')
+  }
+}
 
-          if (id === "dia") {
-            day.innerText = `${value}/`;
-          } else if (id === "mes") {
-            month.innerText = value;
-          }
-        };
-
-    
-
-        const handleFormSubmit = (event) => {
-          event.preventDefault();
-    
-          if (numCard.value.length < 16 || nameCard.value.length < 3 || cvv.value.length < 3) {
-            alert("Preencha todos os campos corretamente");
-           numCard.classList.add("border-red-500");
-            nameCard.classList.add("border-red-500");
-            cvv.classList.add("border-red-500");
-          } else {
-            alert("Pagamento realizado com sucesso");
-          }
-
-        };
-
-
-        numCard.addEventListener("input", handleFormChange);
+numCard.addEventListener('input', handleFormChange)
+nameCard.addEventListener('input', handleFormChange)
+cvv.addEventListener('input', handleFormChange)
+day.addEventListener('input', handleFormChange)
+month.addEventListener('input', handleFormChange)
+document.getElementById('form').addEventListener('submit', handleFormSubmit)
